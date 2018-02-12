@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Tree {
     private Node root;
-    private Plansza map;
+    private Grid map;
     public Tree(String s)
     {
-        map = new Plansza(s);
+        map = new Grid(s);
         root = new Node(null, map.getFreeSpaces());
     }
 
@@ -355,11 +355,11 @@ public class Tree {
         this.root = root;
     }
 
-    public Plansza getMap() {
+    public Grid getMap() {
         return map;
     }
 
-    public void setMap(Plansza map) {
+    public void setMap(Grid map) {
         this.map = map;
     }
 

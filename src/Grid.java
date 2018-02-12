@@ -1,12 +1,12 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Plansza implements Iterable<Boolean> {
+public class Grid implements Iterable<Boolean> {
     private boolean tab[][];
     private int n;
     private int freeSpaces;
 
-    public Plansza(String entry)
+    public Grid(String entry)
     {
         String wrds[] = entry.split("_");
         this.n = Integer.parseInt(wrds[0]);
@@ -86,7 +86,7 @@ public class Plansza implements Iterable<Boolean> {
         return s.toString();
     }
 
-    public boolean checkIfGap(int x, int y)
+    private boolean checkIfGap(int x, int y)
     {
         if(!tab[x][y] && tab[x+1][y] && tab[x-1][y] && tab[x][y+1] && tab[x][y-1])
             return true;
@@ -138,7 +138,7 @@ public class Plansza implements Iterable<Boolean> {
 
         @Override
         public boolean hasNext() {
-            if(row==Plansza.this.n && column==Plansza.this.n+1)
+            if(row==Grid.this.n && column==Grid.this.n+1)
                 return false;
             else
                 return true;
@@ -148,12 +148,12 @@ public class Plansza implements Iterable<Boolean> {
         public Boolean next() {
             if(!hasNext())
                 throw new NoSuchElementException();
-            if(column==Plansza.this.n+1)
+            if(column==Grid.this.n+1)
             {
                 row++;
                 column=1;
             }
-            return Plansza.this.tab[row][column++];
+            return Grid.this.tab[row][column++];
         }
     }
 
